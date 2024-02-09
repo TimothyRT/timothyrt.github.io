@@ -1,0 +1,75 @@
+/* variables */
+:root {
+  --button-color: cornflowerblue;
+  --button-height: 100px;
+  --button-width: 240px;
+  --squish: 10px;  /* vary the squish amount */
+}
+
+.square-side {
+  content:"";
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: (var(--button-width)/2) solid transparent;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  height: 100%;
+  width: 0;
+  z-index: -1;
+  transition: all .1s ease-out;
+  -webkit-transition: all .1s ease-out;
+}
+
+.trapezoid-side {
+  border-top-width: var(--squish);
+  border-bottom-width: var(--squish);
+  border-radius: .2em;
+  top: -(var(--squish));
+}
+
+body {
+  background-color: #2e2e2e;
+}
+button {
+  appearance: none;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  margin-top: 15vh;
+
+  &::before {
+    .square-side;
+    border-left-color: var(--button-color);
+  }
+
+  &::after {
+    .square-side;
+    border-right-color: var(--button-color);
+  }
+  
+  /* mashed state */
+  &:active {
+   -webkit-transform: scale(1.2,.8);
+    
+    &::before {
+      .trapezoid-side;
+      border-left-color: var(--button-color);
+    }
+
+    &::after {
+      .trapezoid-side;
+      border-right-color: var(--button-color);
+    }
+  }
+}
+
+.watermark {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: transparent;
+  color: white;
+  font-size: 5vh;
+}
