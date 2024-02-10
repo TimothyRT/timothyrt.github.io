@@ -4,13 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style_dog.css">
+    <style>
+        button {
+          appearance: none;
+          background-color: inherit;
+          border: none;
+          cursor: pointer;
+        }
+
+        .rotated {
+        transform: rotate(10deg); /* https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate */
+      }
+    </style>
   </head>
-  <body>
-    <audio id="woof" src="woof-short.mp3" preload="auto"></audio> <!-- https://stackoverflow.com/questions/12953928/immediate-play-sound-on-button-click-in-html-page -->
-    <div style="text-align: center">
-      <button onclick="document.getElementById('woof').play();"><img src="Pupper.svg"></button>
+  <body style="background-color: #1e1313; text-align: center; margin-top:10%;">
+    <h1 style="color: rgb(255, 250, 244);">~ PICK ONE ~</h1>
+    <div class="flex-container">
+      <div style="display: inline;">
+        <button onclick="openAll()">
+          <img class="rotated" id="angpao1" style="width: 4rem; margin-right: 6rem;" src="assets/angpao.jpg">
+        </button>
+      </div>
+
+      <div style="display: inline;">
+        <button onclick="openAll()">
+          <img class="rotated" id="angpao2" style="width: 4rem;" src="assets/angpao.jpg">
+        </button>
+      </div>
+
+      <div style="display: inline;">
+        <button onclick="openAll()">
+          <img class="rotated" id="angpao3" style="width: 4rem; margin-left: 6rem;" src="assets/angpao.jpg">
+        </button>
+      </div>
     </div>
-    <div class="watermark">click on the dog! :3</div>
+
+    <script>
+      function openAll() {
+        document.getElementById('angpao1').src='assets/angpao_1000.png'
+        document.getElementById('angpao2').src='assets/angpao_20000.png'
+        document.getElementById('angpao3').src='assets/angpao_100000.png'
+      }
+    </script>
   </body>
 </html>
